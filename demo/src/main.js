@@ -1,4 +1,12 @@
 import Vue from 'vue'
+import VueFaFrom from 'vue-fa-form'
+
+Vue.use(VueFaFrom, {
+  location: {
+    key: '1',
+  },
+})
+
 import App from './App.vue'
 
 import ElementUI from 'element-ui'

@@ -1,4 +1,9 @@
 import { isFile } from '../utils'
+import get from 'lodash.get'
+import clone from 'lodash.clone'
+import isEmpty from 'lodash.isempty'
+import isArray from 'lodash.isarray'
+import isEqual from 'lodash.isequal'
 export default {
   props: {
     item: {
@@ -15,10 +20,10 @@ export default {
       this.updateFiles(files)
     },
     model(files) {
-      if (this._.isEmpty(files) && !this._.isEmpty(this.files)) {
+      if (isEmpty(files) && !isEmpty(this.files)) {
         return this.clearFiles()
       }
-      if (this._.isArray(files)) {
+      if (isArray(files)) {
         if (files.some(item => item.size)) return
         if (this.isEqualURL(files)) return
       }
@@ -26,8 +31,8 @@ export default {
         return
       }
       if (isFile(files)) return
-      if (this._.isEqual(this.files, files)) return
-      if (!this._.isEmpty(files)) {
+      if (isEqual(this.files, files)) return
+      if (!isEmpty(files)) {
         return this.initUrl(files)
       }
     },
@@ -67,6 +72,7 @@ export default {
     this.updateFiles(this.files)
   },
   methods: {
+    get,
     updateFiles(files) {
       const isMultiple = this.limit > 1
       let res = isMultiple ? files : files[0]
@@ -103,7 +109,7 @@ export default {
       this.setFiles(fileList)
     },
     setFiles(fileList) {
-      this.files = this._.clone(fileList)
+      this.files = clone(fileList)
     },
     clearFiles() {
       this.fileList = []
@@ -124,7 +130,7 @@ export default {
       this.initUrl(model)
     },
     initUrl(paths) {
-      if (!this._.isArray(paths)) {
+      if (!isArray(paths)) {
         paths = [paths]
       }
       this.fileList = paths.map(item => {
@@ -136,7 +142,7 @@ export default {
       this.setFiles(this.fileList)
     },
     isEqualURL(files) {
-      return this._.isEqual(this.files.map(item => item.url), files)
+      return isEqual(this.files.map(item => item.url), files)
     },
   },
 }

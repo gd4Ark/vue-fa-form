@@ -1,6 +1,15 @@
-import faModal from './fa-modal'
-export default faModal
+import faForm from './fa-form'
+import initMap from './utils/init-map'
+
+faForm.install = (Vue, options) => {
+  Vue.component(faForm.name, faForm)
+  if (options.location) {
+    initMap(Vue, options.location)
+  }
+}
+
+export default faForm
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('fa-modal', faModal)
+  window.Vue.component(faForm.name, faForm)
 }

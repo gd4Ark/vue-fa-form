@@ -24,11 +24,12 @@
   </fa-base-form>
 </template>
 <script>
+import clone from 'lodash.clone'
 import FaBaseForm from './fa-base-form'
 import { retainKeys } from './utils'
 import FaForm from './mixins/fa-form'
 export default {
-  name: 'FaForm',
+  name: 'VueFaForm',
   components: {
     FaBaseForm
   },
@@ -47,7 +48,7 @@ export default {
   methods: {
     reset() {
       this.newFormData = this.formData
-        ? this._.clone(this.formData)
+        ? clone(this.formData)
         : this.getFormData()
       this.resetForm()
     },

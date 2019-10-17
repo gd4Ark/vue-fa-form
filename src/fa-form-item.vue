@@ -88,6 +88,7 @@
 </template>
 <script>
 import get from 'lodash.get'
+import toPath from 'lodash.topath'
 import FaFormItemControl from './fa-form-control'
 export default {
   name: 'FaFormItem',
@@ -163,7 +164,7 @@ export default {
       return key + (hasIndex ? `.${index}` : `.${item.key}`)
     },
     setModel(path) {
-      const paths = this._.toPath(path)
+      const paths = toPath(path)
       paths.pop()
       this.model = path.includes('.')
         ? get(this.formData, paths)

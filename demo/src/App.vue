@@ -7,11 +7,7 @@
 </template>
 
 <script>
-import VueFaForm from './vue-fa-form'
 export default {
-  components: {
-    VueFaForm
-  },
   data: () => ({
     formItem: [
       {
@@ -34,6 +30,28 @@ export default {
         meta: {
           row: 5
         }
+      },
+      {
+        label: '计数',
+        key: 'count',
+        type: 'count',
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '文本框必填'
+          }
+        ]
+      },
+      {
+        label: '开关',
+        key: 'switch',
+        type: 'switch'
+      },
+      {
+        label: '滑块',
+        key: 'range',
+        type: 'range'
       },
       {
         label: '单图片',
@@ -143,17 +161,68 @@ export default {
             message: '时间为必填'
           }
         ]
+      },
+      {
+        label: '代码',
+        key: 'code',
+        type: 'code',
+        meta: {},
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '时间为必填'
+          }
+        ]
+      },
+      {
+        label: '位置',
+        key: 'location',
+        type: 'location',
+        meta: {
+          search_option: {
+            city: '惠州',
+            citylimit: true
+          },
+          map_center: [114.414659, 23.11059]
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '位置为必填'
+          }
+        ]
+      },
+      {
+        label: '富文本',
+        key: 'richtext',
+        type: 'richtext',
+        meta: {},
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '富文本为必填'
+          }
+        ]
       }
     ],
     getFormData: () => ({
       text: '',
       textarea: '',
+      count: 0,
+      switch: 0,
+      range: 0,
       single_pic: '',
       multi_pic: [],
       file: '',
       select: '',
       radio: '',
-      date: ''
+      date: '',
+      code: '',
+      location: [],
+      richtext: ''
     })
   }),
   methods: {

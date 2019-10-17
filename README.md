@@ -11,7 +11,7 @@
 
 使用 npm 或者 yarn 进行安装
 
-``` bash
+```bash
 $ npm install vue-fa-form
 $ yarn add vue-fa-form
 ```
@@ -22,20 +22,21 @@ $ yarn add vue-fa-form
 import VueFaForm from 'vue-fa-form'
 ```
 
-```vue
+```html
 <template>
- <vue-fa-form :form-item="formItem"
-						  :get-form-data="getFormData"
-							@submit="submit" />
+  <vue-fa-form
+    :form-item="formItem"
+    :get-form-data="getFormData"
+    @submit="submit"
+  />
 </template>
 ```
 
-```vue
-<script>
+```javascript
 import VueFaForm from './vue-fa-form'
 export default {
   components: {
-    VueFaForm
+    VueFaForm,
   },
   data: () => ({
     formItem: [
@@ -47,52 +48,51 @@ export default {
           {
             required: true,
             trigger: 'blur',
-            message: '文本框必填'
-          }
-        ]
+            message: '文本框必填',
+          },
+        ],
       },
       // ...
     ],
     getFormData: () => ({
       text: '',
       // ...
-    })
+    }),
   }),
   methods: {
     submit(data) {
       console.log(data)
-    }
-  }
+    },
+  },
 }
-</script>
 ```
 
 ## 支持的表单项
 
 内置支持的表单项如下：
 
-- 文本（ text ）
-- 文本域（ textarea ）
-- 计数器（ count ）
-- 单选框（ radio ）
-- 选择器（ select ）
-- 联机选择器（ cascader ）
-- 开关（ switch ）
-- 滑块（ slide ）
-- 时间（ date ）
-- 上传（ upload ）
-- 富文本（ richtext ）
-- 代码高亮（ code ）
-- 地图选择器（ location ）
+- [x] 文本（ text ）
+- [x] 文本域（ textarea ）
+- [x] 计数器（ count ）
+- [x] 单选框（ radio ）
+- [x] 选择器（ select ）
+- [x] 联机选择器（ cascader ）
+- [x] 开关（ switch ）
+- [x] 滑块（ slide ）
+- [x] 时间（ date ）
+- [x] 上传（ upload ）
+- [x] 富文本（ richtext ）
+- [x] 代码高亮（ code ）
+- [x] 地图选择器（ location ）
 
 ## 文档
 
-[doc link](http://4ark.me/vue-fa-modal/demo/)
+[Document link](http://4ark.me/vue-fa-modal/demo/)
 
 ## TODO
 
-- 支持更多表单项
-- 优化组件代码
+- [ ] 支持更多表单项
+- [ ] 优化组件代码
 
 ## Author
 

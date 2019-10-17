@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import isEmpty from 'lodash.isempty'
 export default {
   name: 'EditorSlideUpload',
   props: {
@@ -74,7 +75,7 @@ export default {
     handleSubmit() {
       const arr = Object.keys(this.listObj)
         .map(v => this.listObj[v])
-        .filter(item => !this._.isEmpty(item))
+        .filter(item => !isEmpty(item))
       if (!this.checkAllSuccess(arr)) {
         this.$message(
           '请等待所有图片成功上传。如果出现网络问题，请刷新页面并重新上传'

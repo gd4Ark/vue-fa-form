@@ -5,15 +5,16 @@
               :placeholder="placeholder"
               :readonly="true"
               @click.native="onVisible" />
-    <vue-fa-modal ref="modal"
+    <vue-fa-modal v-if="loaded"
+                  ref="modal"
                   btn-size="mini"
                   title="选择位置信息"
                   :append-to-body="true"
                   :need-footer="false"
                   :need-open-btn="false">
-      <div slot="body"
-           class="search">
-        <map-search @click="onClick" />
+      <div class="search">
+        <map-search :item="item"
+                    @click="onClick" />
       </div>
     </vue-fa-modal>
   </div>
@@ -32,6 +33,10 @@ export default {
       type: Array,
       required: true
     },
+    item: {
+      type: Object,
+      required: true
+    },
     size: {
       type: String,
       default: 'mini'
@@ -42,12 +47,18 @@ export default {
     }
   },
   data: () => ({
+    loaded: false,
     showSearch: false
   }),
   computed: {
     strVal() {
       return String(this.model)
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loaded = true
+    }, 500)
   },
   methods: {
     onVisible() {

@@ -12,3 +12,4 @@ export default {
   mixins: [control]
 }
 </script>
+

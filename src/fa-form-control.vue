@@ -6,49 +6,58 @@
                     :size="size"
                     :item="item"
                     :options="selectOptions"
-                    :change="changeSelect" />
+                    :change="changeSelect"
+                    :get-placeholder="getPlaceholder" />
     <!-- radio -->
     <radio-control v-else-if="item.type === 'radio'"
                    v-model="val"
                    :size="size"
                    :item="item"
                    :options="selectOptions"
-                   :change="changeSelect" />
+                   :change="changeSelect"
+                   :get-placeholder="getPlaceholder" />
     <!-- cascader -->
     <cascader-control v-else-if="item.type === 'cascader'"
                       v-model="val"
                       :size="size"
-                      :item="item" />
+                      :item="item"
+                      :get-placeholder="getPlaceholder" />
     <!-- date -->
     <date-control v-else-if="item.type === 'date'"
                   v-model="val"
                   :size="size"
                   :item="item"
-                  :change="changeSelect" />
-    <!-- sidebar -->
+                  :change="changeSelect"
+                  :get-placeholder="getPlaceholder" />
+    <!-- slide -->
     <sidebar-control v-else-if="item.type === 'range'"
                      v-model="val"
                      :size="size"
-                     :item="item" />
+                     :item="item"
+                     :get-placeholder="getPlaceholder" />
     <!-- count -->
     <count-control v-else-if="item.type === 'count'"
                    v-model="val"
                    :size="size"
-                   :item="item" />
+                   :item="item"
+                   :get-placeholder="getPlaceholder" />
     <!-- upload -->
     <upload-control v-else-if="item.type === 'file'"
                     :item="item"
-                    :model.sync="val" />
+                    :model.sync="val"
+                    :get-placeholder="getPlaceholder" />
     <!-- upload-pic -->
     <upload-pic-control v-else-if="item.type === 'pic'"
                         v-model="val"
                         :item="item"
-                        :model.sync="val" />
+                        :model.sync="val"
+                        :get-placeholder="getPlaceholder" />
     <!-- switch -->
     <switch-control v-else-if="item.type === 'switch'"
                     v-model="val"
                     :size="size"
-                    :item="item" />
+                    :item="item"
+                    :get-placeholder="getPlaceholder" />
     <!-- code -->
     <code-control v-else-if="item.type === 'code'"
                   v-model="val"
@@ -57,6 +66,7 @@
     <!-- location -->
     <location-control v-else-if="item.type === 'location'"
                       :model.sync="val"
+                      :item="item"
                       :size="size"
                       :placeholder="getPlaceholder()" />
     <!-- rich text -->
@@ -64,6 +74,7 @@
                        ref="richText"
                        v-model="val"
                        :item="item"
+                       :get-placeholder="getPlaceholder"
                        :size="size" />
     <!-- default -->
     <input-control v-else
@@ -75,6 +86,8 @@
 </template>
 <script>
 import get from 'lodash.get'
+import isNull from 'lodash.isnull'
+import isEqual from 'lodash.isequal'
 import controlList from './mixins/control-list'
 export default {
   name: 'FaFormControl',
@@ -109,13 +122,13 @@ export default {
   },
   watch: {
     val(val) {
-      if (this._.isNull(val)) {
+      if (isNull(val)) {
         val = ''
       }
       this.$emit('update:model', val)
     },
     model(val) {
-      if (!this._.isEqual(this.val, val)) {
+      if (!isEqual(this.val, val)) {
         this.resetRichText(val)
         this.setVal(val)
       }

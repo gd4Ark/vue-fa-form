@@ -1,9 +1,10 @@
 <template>
   <div class="map-search-container">
     <el-amap-search-box class="search-box"
-                        :search-option="searchOption"
+                        :search-option="get(item,'meta.search_option')"
                         :on-search-result="onSearchResult"></el-amap-search-box>
     <amap :center="mapCenter"
+          :item="item"
           @click="onClick">
       <el-amap-marker v-for="(marker,index) in markers"
                       :key="index"
@@ -13,21 +14,28 @@
 </template>
 
 <script>
+import get from 'lodash.get'
 import Amap from './map'
 export default {
   name: 'AMapSearch',
   components: {
     Amap
   },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
   data: () => ({
-    searchOption: {
-      city: '惠州',
-      citylimit: true
-    },
     markers: [],
-    mapCenter: [114.414659, 23.11059]
+    mapCenter: []
   }),
+  mounted() {
+    this.mapCenter = this.get(this.item, 'meta.map_center')
+  },
   methods: {
+    get,
     addMarker() {
       const lng = 121.5 + Math.round(Math.random() * 1000) / 10000
       const lat = 31.197646 + Math.round(Math.random() * 500) / 10000

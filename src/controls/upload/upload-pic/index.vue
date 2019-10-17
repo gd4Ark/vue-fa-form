@@ -31,7 +31,7 @@ export default {
     default: {
       limit: 1,
       maxSize: 2,
-      allowExtensions: ['webp', 'jpg', 'png']
+      allowExtensions: ['webp', 'jpeg', 'jpg', 'png']
     }
   }),
   methods: {
@@ -43,6 +43,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.upload-pic-container {
+  /deep/ .el-upload-list__item {
+    transition: none !important;
+  }
+
+  /deep/ .el-upload-dragger {
+    @include flex-column;
+    justify-content: center;
+    @include wh(auto, 100%);
+    padding: 0;
+  }
+}
 .hidden-upload {
   /deep/ .el-upload--picture-card {
     display: none;

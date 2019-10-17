@@ -20,6 +20,7 @@
  * docs:
  * https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html#tinymce
  */
+import get from 'lodash.get'
 import editorImage from './components/EditorImage'
 import plugins from './plugins'
 import toolbar from './toolbar'
@@ -122,6 +123,7 @@ export default {
     this.destroyTinymce()
   },
   methods: {
+    get,
     init() {
       // dynamic load tinymce from cdn
       load(tinymceCDN, err => {
