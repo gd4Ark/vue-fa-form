@@ -6,6 +6,7 @@
             :rows="get(item,'meta.row')"
             :min="get(item,'meta.min')"
             :max="get(item,'meta.max')"
+            :show-password="get(item,'meta.show_password')"
             :size="size"
             @keyup.enter.native="submit">
     <template v-if="get(item,'meta.slot')"

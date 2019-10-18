@@ -68,10 +68,21 @@ export default {
       const data = retainKeys(this.newFormData, this.getKeys(this.formItem))
       this.$emit('submit', data)
     },
+    isContinue(item) {
+      if (['tab', 'multiple'].includes(item.type)) {
+        return true
+      }
+      if (['object', 'array'].includes(item.type)) {
+        return false
+      }
+      return item.items
+    },
     getKeys(array) {
       return array.reduce((keys, item) => {
-        const append = item.items ? this.getKeys(this.items) : item.key
-        return [append, ...keys]
+        const append = this.isContinue(item)
+          ? this.getKeys(item.items)
+          : [item.key]
+        return keys.concat([], append)
       }, [])
     }
   }

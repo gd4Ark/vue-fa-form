@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueFaFrom from 'vue-fa-form'
+import VueFaForm from './vue-fa-form'
 
-Vue.use(VueFaFrom, {
+Vue.use(VueFaForm, {
   location: {
-    key: '1',
+    key: '123',
   },
 })
 

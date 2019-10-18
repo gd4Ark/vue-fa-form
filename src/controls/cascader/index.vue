@@ -1,11 +1,8 @@
 <template>
   <el-cascader v-model="innerValue"
-               :options="get(item,'meta.options')"
-               :filterable="get(item,'meta.filterable')"
+               v-bind="get(item,'meta')"
+               :options="options"
                :placeholder="getPlaceholder('选择')"
-               :props="get(item,'meta.props',{})"
-               :show-all-levels="get(item,'meta.showAllLevels',true)"
-               :clearable="get(item,'meta.clearable',true)"
                :size="size" />
 </template>
 
@@ -13,6 +10,16 @@
 import control from '../../mixins/control'
 export default {
   name: 'CascaderControl',
-  mixins: [control]
+  mixins: [control],
+  computed: {
+    options() {
+      if (this.get(this.item, 'meta.options')) {
+        return this.item.meta.options
+      } else if (this.get(this.item, 'meta.getOptions')) {
+        return this.item.meta.getOptions()
+      }
+      return []
+    }
+  }
 }
 </script>

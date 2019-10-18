@@ -7,6 +7,7 @@
                     :item="item"
                     :options="selectOptions"
                     :change="changeSelect"
+                    :submit="submit"
                     :get-placeholder="getPlaceholder" />
     <!-- radio -->
     <radio-control v-else-if="item.type === 'radio'"
@@ -15,12 +16,14 @@
                    :item="item"
                    :options="selectOptions"
                    :change="changeSelect"
+                   :submit="submit"
                    :get-placeholder="getPlaceholder" />
     <!-- cascader -->
     <cascader-control v-else-if="item.type === 'cascader'"
                       v-model="val"
                       :size="size"
                       :item="item"
+                      :submit="submit"
                       :get-placeholder="getPlaceholder" />
     <!-- date -->
     <date-control v-else-if="item.type === 'date'"
@@ -28,18 +31,21 @@
                   :size="size"
                   :item="item"
                   :change="changeSelect"
+                  :submit="submit"
                   :get-placeholder="getPlaceholder" />
-    <!-- slide -->
-    <sidebar-control v-else-if="item.type === 'range'"
-                     v-model="val"
-                     :size="size"
-                     :item="item"
-                     :get-placeholder="getPlaceholder" />
+    <!-- slider -->
+    <slider-control v-else-if="item.type === 'slider'"
+                    v-model="val"
+                    :size="size"
+                    :item="item"
+                    :submit="submit"
+                    :get-placeholder="getPlaceholder" />
     <!-- count -->
     <count-control v-else-if="item.type === 'count'"
                    v-model="val"
                    :size="size"
                    :item="item"
+                   :submit="submit"
                    :get-placeholder="getPlaceholder" />
     <!-- upload -->
     <upload-control v-else-if="item.type === 'file'"
@@ -51,34 +57,40 @@
                         v-model="val"
                         :item="item"
                         :model.sync="val"
+                        :submit="submit"
                         :get-placeholder="getPlaceholder" />
     <!-- switch -->
     <switch-control v-else-if="item.type === 'switch'"
                     v-model="val"
                     :size="size"
                     :item="item"
+                    :submit="submit"
                     :get-placeholder="getPlaceholder" />
     <!-- code -->
     <code-control v-else-if="item.type === 'code'"
                   v-model="val"
                   :item="item"
+                  :submit="submit"
                   :get-placeholder="getPlaceholder" />
     <!-- location -->
     <location-control v-else-if="item.type === 'location'"
                       :model.sync="val"
                       :item="item"
                       :size="size"
+                      :submit="submit"
                       :placeholder="getPlaceholder()" />
     <!-- rich text -->
     <rich-text-control v-else-if="item.type === 'richtext'"
                        ref="richText"
                        v-model="val"
                        :item="item"
+                       :submit="submit"
                        :get-placeholder="getPlaceholder"
                        :size="size" />
     <!-- default -->
     <input-control v-else
                    v-model="val"
+                   :submit="submit"
                    :get-placeholder="getPlaceholder"
                    :item="item"
                    :size="size" />
@@ -113,7 +125,9 @@ export default {
   }),
   computed: {
     selectOptions() {
-      if (get(this.item, 'meta.options')) {
+      if (get(this.item, 'meta.getOptions')) {
+        return this.item.meta.getOptions()
+      } else if (get(this.item, 'meta.options')) {
         return this.item.meta.options
       }
       const module = get(this.item, 'meta.option_module')

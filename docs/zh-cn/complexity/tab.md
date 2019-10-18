@@ -1,3 +1,10 @@
+# 标签页（tab）
+
+## 例子
+
+<vuep  template="#tab-example"></vuep>
+
+<script v-pre type="text/x-template" id="tab-example">
 <template>
   <vue-fa-form :form-item="formItems"
                :get-form-data="getFormData"
@@ -5,11 +12,7 @@
 </template>
 
 <script>
-import VueFaForm from './vue-fa-form'
 export default {
-  components: {
-    VueFaForm
-  },
   data() {
     return {
       formItems: [
@@ -150,3 +153,9 @@ export default {
   }
 }
 </script>
+
+</script>
+
+
+
+

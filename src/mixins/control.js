@@ -6,7 +6,7 @@ export default {
       required: true,
     },
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean, Array, Object, File],
       required: true,
     },
     size: {
@@ -16,6 +16,10 @@ export default {
     getPlaceholder: {
       type: Function,
       default: () => {},
+    },
+    submit: {
+      type: Function,
+      required: true,
     },
   },
   computed: {

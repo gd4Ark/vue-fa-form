@@ -36,17 +36,17 @@ module.exports = {
               'vue-style-loader',
               'css-loader',
               'sass-loader',
-              // {
-              //   loader: 'sass-resources-loader',
-              //   options: {
-              //     resources: [
-              //       path.resolve(
-              //         __dirname,
-              //         './src/vue-fa-form/styles/_app.scss',
-              //       ),
-              //     ],
-              //   },
-              // },
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: [
+                    path.resolve(
+                      __dirname,
+                      './src/vue-fa-form/styles/_app.scss',
+                    ),
+                  ],
+                },
+              },
             ],
           },
 

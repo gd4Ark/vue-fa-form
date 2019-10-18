@@ -5,11 +5,11 @@
     <textarea :id="tinymceId"
               class="tinymce-textarea" />
     <div class="editor-custom-btn-container">
-      <editor-image v-if="get(item,'meta.upload_pic_url')"
+      <editor-image v-if="get(item,'meta.uploadImage')"
                    color="#1890ff"
                     class="editor-upload-btn"
                     :size="size"
-                    :request-url="get(item,'meta.upload_pic_url')"
+                    :handle-request="get(item,'meta.uploadImage')"
                     @successCBK="imageSuccessCBK" />
     </div>
   </div>

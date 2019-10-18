@@ -1,17 +1,14 @@
 <template>
   <el-select v-model="innerValue"
-             :multiple="get(item,'meta.multiple')"
-             :multiple-limit="get(item,'meta.multiple_limit',0)"
              :size="size"
-             :filterable="get(item,'meta.filterable')"
              :placeholder="getPlaceholder('选择')"
-             :clearable="get(item,'meta.clearable',true)"
+             v-bind="get(item,'meta')"
              @change="change">
     <el-option v-for="option in options"
                :key="option.value"
                :label="option.label"
                :value="option.value" />
-    <template v-if="get(item,'meta.create_link')"
+    <template v-if="get(item,'meta.create_link') && hasRoute"
               slot="empty">
       <div class="create-select">
         <span>该{{ item.label }}不存在</span>
@@ -25,6 +22,11 @@
 import selectControl from '../../mixins/select-control'
 export default {
   name: 'SelectControl',
-  mixins: [selectControl]
+  mixins: [selectControl],
+  computed: {
+    hasRoute() {
+      return !!this.$route
+    }
+  }
 }
 </script>

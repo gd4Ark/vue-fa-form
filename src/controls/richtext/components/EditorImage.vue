@@ -1,13 +1,10 @@
 <template>
   <div class="upload-container">
-    <el-button :style="{ background: color,borderColor: color }"
-               icon="el-icon-upload"
-               size="mini"
-               type="primary"
-               @click=" dialogVisible = true">
-      上传
-    </el-button>
-    <el-dialog :visible.sync="dialogVisible">
+    <vue-fa-modal open-btn-size="mini"
+                  open-btn-icon="el-icon-upload"
+                  open-btn-type="primary"
+                  open-btn-text="上传"
+                  @submit="handleSubmit">
       <el-upload :multiple="true"
                  :file-list="fileList"
                  :show-file-list="true"
@@ -23,27 +20,22 @@
           点击上传
         </el-button>
       </el-upload>
-      <el-button :size="size"
-                 @click="dialogVisible = false">
-        取消
-      </el-button>
-      <el-button type="primary"
-                 :size="size"
-                 @click="handleSubmit">
-        确认
-      </el-button>
-    </el-dialog>
+    </vue-fa-modal>
   </div>
 </template>
 
 <script>
+import VueFaModal from 'vue-fa-modal'
 import isEmpty from 'lodash.isempty'
 export default {
   name: 'EditorSlideUpload',
+  components: {
+    VueFaModal
+  },
   props: {
-    requestUrl: {
-      type: String,
-      default: ''
+    handleRequest: {
+      type: Function,
+      required: true
     },
     size: {
       type: String,
@@ -65,7 +57,7 @@ export default {
     async onRquest({ file }) {
       const formData = new FormData()
       formData.append('img', file)
-      return await this.$axios.upload(this.requestUrl, formData)
+      return await this.handleRequest(formData)
     },
     checkAllSuccess(arr) {
       return arr.every(item => {
@@ -131,6 +123,11 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.editor-custom-btn-container {
+  right: 10px;
+}
+</style>
 <style lang="scss" scoped>
 .editor-slide-upload {
   margin-bottom: 20px;

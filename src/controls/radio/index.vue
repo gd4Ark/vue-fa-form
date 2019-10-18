@@ -5,6 +5,7 @@
     <component :is="get(item,'meta.radio_type','el-radio')"
                v-for="option in options"
                :key="option.value"
+               border
                :label="option.value">
       {{ option.label }}
     </component>

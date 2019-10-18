@@ -1,8 +1,8 @@
 <template>
   <div :class="containerClassName">
     <!-- is object -->
-    <template v-if="item.isObject">
-      <fa-form-item v-for="(subItem) in item.subs"
+    <template v-if="isObject">
+      <fa-form-item v-for="(subItem) in item.items"
                     :key="getKey(subItem)"
                     :splice-key="getKey(subItem)"
                     :item="subItem"
@@ -12,8 +12,8 @@
                     :form-data="formData" />
     </template>
     <!-- is array -->
-    <template v-else-if="item.isArray">
-      <fa-form-item v-for="(subItem,subIndex) in item.subs"
+    <template v-else-if="isArray">
+      <fa-form-item v-for="(subItem,subIndex) in item.items"
                     :key="getKey(subItem,subIndex)"
                     :splice-key="getKey(subItem,subIndex)"
                     :item="subItem"
@@ -23,7 +23,7 @@
                     :form-data="formData" />
     </template>
     <!-- is multiple -->
-    <template v-else-if="item.isMultiple">
+    <template v-else-if="isMultiple">
       <fa-form-item v-for="(subItem,subIndex) in item.items"
                     :key="subIndex"
                     :item="subItem"
@@ -34,7 +34,7 @@
                     :splice-key="subItem.key" />
     </template>
     <!-- is tab -->
-    <template v-else-if="item.isTab">
+    <template v-else-if="isTab">
       <el-tabs v-model="item.activeName">
         <el-tab-pane v-for="(subItem,subIndex) in item.items"
                      :key="subIndex"
@@ -50,7 +50,7 @@
         </el-tab-pane>
       </el-tabs>
     </template>
-    <template v-else-if="item.isTitle">
+    <template v-else-if="isTitle">
       <el-divider>{{ item.title }}</el-divider>
     </template>
     <template v-else>
@@ -125,11 +125,26 @@ export default {
     model: null
   }),
   computed: {
+    isObject() {
+      return this.item.type === 'object'
+    },
+    isArray() {
+      return this.item.type === 'array'
+    },
+    isTab() {
+      return this.item.type === 'tab'
+    },
+    isMultiple() {
+      return this.item.type === 'multiple'
+    },
+    isTitle() {
+      return this.item.type === 'title'
+    },
     containerClassName() {
       return [
         'el-form-item ',
         'el-form-item-container',
-        { 'el-form-item-tab': this.item.isTab },
+        { 'el-form-item-tab': this.isTab },
         { 'is-required': get(this.item, 'meta.required') }
       ]
     }

@@ -1,5 +1,3 @@
-import VueAMap from 'vue-amap'
-
 const clearMap = () => {
   const amapKeys = Object.keys(localStorage).filter(key => key.match(/^_AMap_/))
 
@@ -10,6 +8,8 @@ const clearMap = () => {
 
 export default (Vue, config) => {
   clearMap()
+
+  const VueAMap = require('vue-amap').default
 
   VueAMap.initAMapApiLoader({
     key: config.key,

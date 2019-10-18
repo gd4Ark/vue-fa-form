@@ -21,7 +21,7 @@
     "vue": "^2.5.11",
     "vue-amap": "^0.5.10",
     "vue-codemirror-lite": "^1.0.4",
-    "vue-fa-form": "0.0.14",
+    "vue-fa-form": "0.0.15",
     "vue-fa-modal": "^0.1.1"
   },
   "browserslist": [
@@ -32,6 +32,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.0.5",

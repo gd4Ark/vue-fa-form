@@ -65,11 +65,20 @@ export default {
         const k = key ? key + append : el.key
         if (el.rules) {
           this.rules[k] = el.rules
-        } else if (this.items || this.isObject || this.isArray) {
-          this.initRules(this.items ? el.items : el.subs, this.items ? key : k)
+        } else {
+          const isComplex = ['object', 'array'].includes(el.type)
+          this.initRules(el.items, isComplex ? k : key)
         }
       })
     }
   }
 }
 </script>
+<style lang="scss">
+.el-form-item.el-form-item-container {
+  margin-bottom: 0;
+}
+.el-form-item:not(.el-form-item-container) {
+  margin-bottom: 22px;
+}
+</style>
