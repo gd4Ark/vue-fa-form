@@ -1,6 +1,6 @@
 {
   "name": "vue-fa-form",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "A JSON configuration Render form Component for Vue.js and Element-UI",
   "author": "gd4ark <gd.4ark@gmail.com>",
   "main": "dist/vue-fa-form.min.js",

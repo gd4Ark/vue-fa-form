@@ -65,7 +65,7 @@ export default {
         const k = key ? key + append : el.key
         if (el.rules) {
           this.rules[k] = el.rules
-        } else {
+        } else if (el.items) {
           const isComplex = ['object', 'array'].includes(el.type)
           this.initRules(el.items, isComplex ? k : key)
         }

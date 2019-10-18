@@ -11,9 +11,11 @@ import VueFaForm from 'vue-fa-form'
 ## 使用
 
 ```vue
- <vue-fa-form  :form-item="formItems"
-               :get-form-data="getFormData"
-               @submit="submit" />
+<vue-fa-form
+  :form-item="formItems"
+  :get-form-data="getFormData"
+  @submit="submit"
+/>
 ```
 
 要构建一个表单，需要传入表单项`form-item`以及获取表单数据函数`get-form-data`。
@@ -172,11 +174,10 @@ export default {
 
 ## form-item
 
-| 属性  |   类型   |                             描述                             |
-| :---: | :------: | :----------------------------------------------------------: |
-| label | `String` |                           标签文本                           |
-|  key  | `String` |                         对应的属性值                         |
-| type  | `String` |            对应的表单项组件，可选值参见《表单项》            |
-| meta  | `Object` |             扩展属性，根据不同表单项有不同的选值             |
+| 属性  |   类型   |                                      描述                                      |
+| :---: | :------: | :----------------------------------------------------------------------------: |
+| label | `String` |                                    标签文本                                    |
+|  key  | `String` |                                  对应的属性值                                  |
+| type  | `String` |                     对应的表单项组件，可选值参见《表单项》                     |
+| meta  | `Object` |                      扩展属性，根据不同表单项有不同的选值                      |
 | rules | `Array`  | 数据验证，详见 [Element 文档](https://element.eleme.cn/#/zh-CN/component/form) |
-

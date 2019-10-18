@@ -4,8 +4,8 @@
 
 特点：
 
-- 通过 JSON 形式构建，支持复杂对象
 - 支持大量表单项，内置数据验证
+- 通过 JSON 形式构建，支持复杂对象
 
 ## 安装
 
@@ -25,7 +25,7 @@ import VueFaForm from 'vue-fa-form'
 ```html
 <template>
   <vue-fa-form
-    :form-item="formItem"
+    :form-item="formItems"
     :get-form-data="getFormData"
     @submit="submit"
   />
@@ -39,7 +39,7 @@ export default {
     VueFaForm,
   },
   data: () => ({
-    formItem: [
+    formItems: [
       {
         label: '文本框',
         key: 'text',
@@ -67,32 +67,9 @@ export default {
 }
 ```
 
-## 支持的表单项
-
-内置支持的表单项如下：
-
-- [x] 文本（ text ）
-- [x] 文本域（ textarea ）
-- [x] 计数器（ count ）
-- [x] 单选框（ radio ）
-- [x] 选择器（ select ）
-- [x] 联机选择器（ cascader ）
-- [x] 开关（ switch ）
-- [x] 滑块（ slide ）
-- [x] 时间（ date ）
-- [x] 上传（ upload ）
-- [x] 富文本（ richtext ）
-- [x] 代码高亮（ code ）
-- [x] 地图选择器（ location ）
-
 ## 文档
 
-[Document link](http://4ark.me/vue-fa-modal/demo/)
-
-## TODO
-
-- [ ] 支持更多表单项
-- [ ] 优化组件代码
+[Document link](http://4ark.me/vue-fa-form)
 
 ## Author
 
@@ -105,3 +82,4 @@ export default {
 ## Conclusion
 
 If you think my project is good👏 . Give a Star⭐ encouragement.
+

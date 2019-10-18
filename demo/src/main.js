@@ -1,11 +1,4 @@
 import Vue from 'vue'
-import VueFaForm from './vue-fa-form'
-
-Vue.use(VueFaForm, {
-  location: {
-    key: '123',
-  },
-})
 
 import App from './App.vue'
 

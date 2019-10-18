@@ -3,146 +3,142 @@
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
-
 <script>
 import VueFaForm from './vue-fa-form'
 export default {
   components: {
     VueFaForm
   },
-  data() {
-    return {
-      formItems: [
-        {
-          key: 'nums',
-          type: 'tab',
-          activeName: 'base',
-          items: [
+  data: () => ({
+    formItems: [
+      {
+        label: '文本框',
+        key: 'text',
+        type: 'text',
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '文本框必填'
+          }
+        ]
+      },
+      {
+        label: '文本域',
+        key: 'textarea',
+        type: 'textarea',
+        meta: {
+          row: 5
+        }
+      },
+      {
+        label: '单图片',
+        key: 'single_pic',
+        type: 'pic',
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '单图片为必填'
+          }
+        ]
+      },
+      {
+        label: '多图片',
+        key: 'multi_pic',
+        type: 'pic',
+        meta: {
+          limit: 5,
+          multiple: true
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '单图片为必填'
+          }
+        ]
+      },
+      {
+        label: '选择',
+        key: 'select',
+        type: 'select',
+        meta: {
+          options: [
             {
-              type: 'multiple',
-              title: '基本',
-              key: 'base',
-              items: [
-                {
-                  key: 'nickname',
-                  label: '昵称',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'phone',
-                  label: '电话',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'age',
-                  label: '年龄',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'email',
-                  label: '邮箱',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                }
-              ]
+              label: '选项一',
+              value: 1
             },
             {
-              type: 'multiple',
-              title: '其他',
-              key: 'other',
-              items: [
-                {
-                  key: 'text1',
-                  label: '文本1',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'text2',
-                  label: '文本2',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'text3',
-                  label: '文本3',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                },
-                {
-                  key: 'text4',
-                  label: '文本4',
-                  type: 'text',
-                  rules: [
-                    {
-                      required: true,
-                      trigger: 'blur',
-                      message: '必填'
-                    }
-                  ]
-                }
-              ]
+              label: '选项二',
+              value: 2
+            },
+            {
+              label: '选项三',
+              value: 3
+            }
+          ],
+          filterable: true
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
+        label: '单选项',
+        key: 'radio',
+        type: 'radio',
+        meta: {
+          radio_type: 'el-radio-button',
+          options: [
+            {
+              label: '男',
+              value: 0
+            },
+            {
+              label: '女',
+              value: 1
             }
           ]
-        }
-      ],
-      getFormData: () => ({
-        nickname: '',
-        phone: '',
-        age: '',
-        email: '',
-        text1: '',
-        text2: '',
-        text3: '',
-        text4: ''
-      })
-    }
-  },
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
+        label: '时间',
+        key: 'date',
+        type: 'date',
+        meta: {
+          control_type: 'datetime'
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '时间为必填'
+          }
+        ]
+      }
+    ],
+    getFormData: () => ({
+      text: '',
+      textarea: '',
+      single_pic: '',
+      multi_pic: [],
+      select: '',
+      radio: '',
+      date: ''
+    })
+  }),
   methods: {
     submit(data) {
       console.log(data)
