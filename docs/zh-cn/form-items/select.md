@@ -4,7 +4,7 @@
 
 <script v-pre type="text/x-template" id="select-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -53,22 +53,23 @@ export default {
 
 支持 Select 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/select)，除此之外：
 
-|    属性    |    类型    | 默认值 |                    描述                     |
-| :--------: | :--------: | :----: | :-----------------------------------------: |
-|  options   |  `Array`   |        |                  选项列表                   |
-| getOptions | `Function` |        | 获取选项列表方法，该属性优先级比`options`高 |
+|     属性     |    类型    | 默认值 |                    描述                     |
+| :----------: | :--------: | :----: | :-----------------------------------------: |
+|   options    |  `Array`   |        |                  选项列表                   |
+|  getOptions  | `Function` |        | 获取选项列表方法，该属性优先级比`options`高 |
+| changeSubmit | `Boolean`  | false  |                 改变时提交                  |
 
 ### options
 
-```js
+```json
 [
   {
-    label: '男',
-    value: 0
+    "label": "男",
+    "value": 0
   },
   {
-    label: '女',
-    value: 1
+    "label": "女",
+    "value": 1
   }
 ]
 ```
@@ -81,7 +82,7 @@ export default {
 
 <script v-pre type="text/x-template" id="dynamic-select-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -127,4 +128,3 @@ export default {
 }
 </script>
 </script>
-

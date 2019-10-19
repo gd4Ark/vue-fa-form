@@ -18,7 +18,7 @@
 
 <script v-pre type="text/x-template" id="object-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -89,5 +89,5 @@ export default {
 </script>
 </script>
 
-从上面例子得知，需要嵌套对象，只需要声明`type`属性为`object`即可。
+需要嵌套对象，只需要声明`type`属性为`object`即可。
 

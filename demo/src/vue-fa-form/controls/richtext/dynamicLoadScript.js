@@ -46,10 +46,7 @@ const dynamicLoadScript = (src, callback) => {
 
   function ieOnEnd(script) {
     script.onreadystatechange = function() {
-      if (
-        this.readyState !== 'complete' &&
-                this.readyState !== 'loaded'
-      ) {
+      if (this.readyState !== 'complete' && this.readyState !== 'loaded') {
         return
       }
       this.onreadystatechange = null

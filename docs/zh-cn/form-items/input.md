@@ -10,7 +10,7 @@
 
 <script v-pre type="text/x-template" id="text-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
               :get-form-data="getFormData" />
 </template>
 <script>
@@ -47,7 +47,7 @@ export default {
 <script v-pre type="text/x-template" id="text-icon-example">
 <template>
   <vue-fa-form :show-label="false"
-               :form-item="formItems"
+               :form-items="formItems"
                :get-form-data="getFormData" />
 </template>
 <script>
@@ -87,7 +87,6 @@ export default {
 这里我们做了几个操作：
 
 - 设置`show-label`为`false`
-- 删除`label`属性
 - 添加`slot`属性，详见 [Element 文档](https://element.eleme.cn/#/zh-CN/component/input)
 
 ## 文本框（textarea）
@@ -96,7 +95,7 @@ export default {
 
 <script v-pre type="text/x-template" id="textarea-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
               :get-form-data="getFormData" />
 </template>
 <script>
@@ -109,7 +108,7 @@ export default {
           key: 'textarea',
           type: 'textarea',
           meta: {
-            row: 6
+            rows: 6
           }
         }
       ],
@@ -123,21 +122,13 @@ export default {
 
 </script>
 
-### meta 属性
-
-> 以下为 `meta` 的属性
-
-| 属性 |   类型   | 默认值 | 描述 |
-| :--: | :------: | :----: | :--: |
-| row  | `Number` |   -    | 行数 |
-
 ## 数字（number）
 
 <vuep  template="#number-example"></vuep>
 
 <script v-pre type="text/x-template" id="number-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
               :get-form-data="getFormData" />
 </template>
 
@@ -166,12 +157,6 @@ export default {
 </script>
 
 </script>
-### meta  属性
-
-| 属性 |   类型   | 默认值 |  描述  |
-| :--: | :------: | :----: | :----: |
-| min  | `Number` |   -    |  行数  |
-| max  | `Number` |   -    | 最大值 |
 
 ## 密码（password）
 
@@ -179,7 +164,7 @@ export default {
 
 <script v-pre type="text/x-template" id="password-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
               :get-form-data="getFormData" />
 </template>
 
@@ -207,9 +192,5 @@ export default {
 
 ## meta 属性
 
-|     属性      |   类型    |         默认值         |         描述         |
-| :-----------: | :-------: | :--------------------: | :------------------: |
-|  placeholder  | `String`  | 请输入+ `label` 属性值 |        占位符        |
-|   clearable   | `Boolean` |          true          |      是否可清空      |
-| show_password | `Boolean` |         false          | 是否显示切换密码图标 |
+参见 [Element 文档](https://element.eleme.cn/#/zh-CN/component/input)
 

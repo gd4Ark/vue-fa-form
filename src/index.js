@@ -1,4 +1,4 @@
-import faForm from './fa-form'
+import faForm from './components/fa-form'
 import initMap from './utils/init-map'
 
 faForm.install = (Vue, options) => {

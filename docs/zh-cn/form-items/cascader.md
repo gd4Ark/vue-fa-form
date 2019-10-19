@@ -4,7 +4,7 @@
 
 <script v-pre type="text/x-template" id="cascader-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -314,9 +314,10 @@ export default {
 
 支持 Cascader 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/cascader)，除此之外：
 
-|    属性    |    类型    | 默认值 |                    描述                     |
-| :--------: | :--------: | :----: | :-----------------------------------------: |
-|  options   |  `Array`   |        |                  选项列表                   |
-| getOptions | `Function` |        | 获取选项列表方法，该属性优先级比`options`高 |
+|     属性     |    类型    | 默认值 |                    描述                     |
+| :----------: | :--------: | :----: | :-----------------------------------------: |
+|   options    |  `Array`   |        |                  选项列表                   |
+|  getOptions  | `Function` |        | 获取选项列表方法，该属性优先级比`options`高 |
+| changeSubmit | `Boolean`  | false  |                 改变时提交                  |
 
 用法可以参照 [选择器](/zh-cn/form-items/select?id=options) 一章

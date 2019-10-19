@@ -13,8 +13,8 @@ import VueFaForm from 'vue-fa-form'
 
 Vue.use(VueFaForm, {
   location: {
-    key: 'your_key'
-  }
+    key: 'your_key',
+  },
 })
 ```
 
@@ -32,7 +32,7 @@ Vue.use(VueFaForm, {
 
 ```html
 <script>
-	window.VueAMap.initAMapApiLoader({
+  window.VueAMap.initAMapApiLoader({
     key: 'YOUR_KEY',
     plugin: [
       'AMap.Autocomplete',
@@ -44,13 +44,11 @@ Vue.use(VueFaForm, {
       'AMap.PolyEditor',
       'AMap.CircleEditor',
     ],
-        // 默认高德 sdk 版本为 1.4.4
+    // 默认高德 sdk 版本为 1.4.4
     v: '1.4.4',
   })
 </script>
 ```
-
-
 
 ## 使用
 
@@ -58,7 +56,7 @@ Vue.use(VueFaForm, {
 
 <script v-pre type="text/x-template" id="location-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -73,11 +71,11 @@ export default {
           key: 'location',
           type: 'location',
           meta: {
-            search_option: {
+            searchOption: {
               city: '惠州',
               citylimit: true
             },
-            map_center: [114.414659, 23.11059]
+            mapCenter: [114.414659, 23.11059]
           }
         }
       ],
@@ -97,15 +95,14 @@ export default {
 
 ## meta 属性
 
-|     属性      |  类型   | 默认值 |          描述          |
-| :-----------: | :-----: | :----: | :--------------------: |
-| search_option | `Array` |  必填  |     地图搜索条件，     |
-|  map_center   | `Array` |  必填  | 默认中心点，经纬度数组 |
+|     属性     |  类型   | 默认值 |          描述          |
+| :----------: | :-----: | :----: | :--------------------: |
+| searchOption | `Array` |  必填  |     地图搜索条件，     |
+|  mapCenter   | `Array` |  必填  | 默认中心点，经纬度数组 |
 
-### search_option
+### searchOption
 
 |   属性    |   类型    | 默认值 |        描述        |
 | :-------: | :-------: | :----: | :----------------: |
 |   city    | `String`  |  必填  |       城市名       |
 | citylimit | `Boolean` |  必填  | 是否限制城市内搜索 |
-

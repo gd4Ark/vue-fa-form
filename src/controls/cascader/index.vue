@@ -2,7 +2,8 @@
   <el-cascader v-model="innerValue"
                v-bind="attrs"
                :options="options"
-               :placeholder="getPlaceholder('选择')" />
+               :placeholder="getPlaceholder('选择')"
+               @change="change" />
 </template>
 
 <script>

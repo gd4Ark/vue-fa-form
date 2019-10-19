@@ -12,13 +12,13 @@ import VueFaForm from 'vue-fa-form'
 
 ```vue
 <vue-fa-form
-  :form-item="formItems"
+  :form-items="formItems"
   :get-form-data="getFormData"
   @submit="submit"
 />
 ```
 
-要构建一个表单，需要传入表单项`form-item`以及获取表单数据函数`get-form-data`。
+要构建一个表单，需要传入表单项`form-items`以及获取表单数据函数`get-form-data`。
 
 ## 例子
 
@@ -26,7 +26,7 @@ import VueFaForm from 'vue-fa-form'
 
 <script v-pre type="text/x-template" id="quick-start-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -51,7 +51,7 @@ export default {
         key: 'textarea',
         type: 'textarea',
         meta: {
-          row: 5
+          rows: 5
         }
       },
       {
@@ -87,6 +87,7 @@ export default {
         key: 'select',
         type: 'select',
         meta: {
+          changeSubmit: true,
           options: [
             {
               label: '选项一',
@@ -116,7 +117,7 @@ export default {
         key: 'radio',
         type: 'radio',
         meta: {
-          radio_type: 'el-radio-button',
+          type: 'el-radio-button',
           options: [
             {
               label: '男',
@@ -143,11 +144,11 @@ export default {
         meta: {
           options: [
             {
-              label: '男',
+              label: '选项一',
               value: 0
             },
             {
-              label: '女',
+              label: '选项二',
               value: 1
             }
           ]
@@ -161,11 +162,11 @@ export default {
         ]
       },
       {
-        label: '时间',
+        label: '日期',
         key: 'date',
         type: 'date',
         meta: {
-          control_type: 'datetime'
+          type: 'datetime'
         },
         rules: [
           {
@@ -174,6 +175,23 @@ export default {
             message: '时间为必填'
           }
         ]
+      },
+      {
+        label: '位置',
+        key: 'location',
+        type: 'location',
+        meta: {
+          searchOption: {
+            city: '惠州',
+            citylimit: true
+          },
+          mapCenter: [114.414659, 23.11059]
+        }
+      },
+      {
+        label: '富文本',
+        key: 'richtext',
+        type: 'richtext'
       }
     ],
     getFormData: () => ({
@@ -184,7 +202,9 @@ export default {
       select: '',
       radio: '',
       checkbox: [],
-      date: ''
+      date: '',
+      location: [],
+      richtext: ''
     })
   }),
   methods: {
@@ -195,13 +215,3 @@ export default {
 }
 </script>
 </script>
-
-## form-item
-
-| 属性  |   类型   |                                      描述                                      |
-| :---: | :------: | :----------------------------------------------------------------------------: |
-| label | `String` |                                    标签文本                                    |
-|  key  | `String` |                                  对应的属性值                                  |
-| type  | `String` |                     对应的表单项组件，可选值参见《表单项》                     |
-| meta  | `Object` |                      扩展属性，根据不同表单项有不同的选值                      |
-| rules | `Array`  | 数据验证，详见 [Element 文档](https://element.eleme.cn/#/zh-CN/component/form) |

@@ -2,13 +2,8 @@
   <el-input v-model="innerValue"
             :type="item.type"
             :placeholder="getPlaceholder()"
-            :clearable="get(item,'meta.clearable',true)"
-            :rows="get(item,'meta.row')"
-            :min="get(item,'meta.min')"
-            :max="get(item,'meta.max')"
-            :show-password="get(item,'meta.show_password')"
-            :size="size"
-            @keyup.enter.native="submit">
+            v-bind="attrs"
+            @keyup.enter.native="handleSubmit">
     <template v-if="get(item,'meta.slot')"
               :slot="item.meta.slot.name">
       <template v-if="item.meta.slot.type === 'icon'">
@@ -25,6 +20,13 @@
 import control from '../../mixins/control'
 export default {
   name: 'InputControl',
-  mixins: [control]
+  mixins: [control],
+  methods: {
+    handleSubmit() {
+      const types = ['textarea']
+      if (types.includes(this.item.type)) return
+      this.submit()
+    }
+  }
 }
 </script>

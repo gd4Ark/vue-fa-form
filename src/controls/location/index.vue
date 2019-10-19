@@ -2,7 +2,7 @@
   <div class="location-control">
     <el-input v-model="strVal"
               :size="size"
-              :placeholder="placeholder"
+              :placeholder="getPlaceholder()"
               :readonly="true"
               @click.native="onVisible" />
     <vue-fa-modal v-if="loaded"
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import control from '../../mixins/control'
 import VueFaModal from 'vue-fa-modal'
 import MapSearch from './map-search'
 export default {
@@ -28,31 +29,14 @@ export default {
     VueFaModal,
     MapSearch
   },
-  props: {
-    model: {
-      type: Array,
-      required: true
-    },
-    item: {
-      type: Object,
-      required: true
-    },
-    size: {
-      type: String,
-      default: 'mini'
-    },
-    placeholder: {
-      type: String,
-      default: '请输入位置'
-    }
-  },
+  mixins: [control],
   data: () => ({
     loaded: false,
     showSearch: false
   }),
   computed: {
     strVal() {
-      return String(this.model)
+      return String(this.value)
     }
   },
   mounted() {
@@ -66,7 +50,8 @@ export default {
     },
     onClick(data) {
       const { lng, lat } = data
-      this.$emit('update:model', [lng, lat])
+      this.$emit('update:value', [lng, lat])
+      this.change()
       this.$refs.modal.hidden()
     }
   }

@@ -1,51 +1,51 @@
-import form from './form'
 export default {
-  mixins: [form],
   props: {
     // data
+    formItems: {
+      type: Array,
+      required: true
+    },
     formData: {
       type: Object,
-      default: null,
+      default: null
     },
     getFormData: {
       type: Function,
-      default: () => {},
+      default: () => {}
+    },
+    // style
+    size: {
+      type: String,
+      default: ''
     },
     // btn
     needSubmitBtn: {
       type: Boolean,
-      default: true,
+      default: true
     },
     needResetBtn: {
       type: Boolean,
-      default: true,
+      default: true
     },
     btnDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     submitBtnText: {
       type: String,
-      default: '提交',
+      default: '提交'
     },
     resetBtnText: {
       type: String,
-      default: '重置',
-    },
+      default: '重置'
+    }
   },
   computed: {
-    baseFormAttrs() {
-      const props = [
-        'inline',
-        'size',
-        'showLabel',
-        'labelWidth',
-        'showMessage',
-        'formItem',
-      ]
-      return props.map(key => ({
-        [key]: this[key],
-      }))
-    },
-  },
+    attrs() {
+      const defaultAttrs = {
+        size: this.size
+      }
+      return Object.assign(this.$attrs, defaultAttrs)
+    }
+  }
 }

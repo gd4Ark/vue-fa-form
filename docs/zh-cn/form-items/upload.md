@@ -6,7 +6,7 @@
 
 <script v-pre type="text/x-template" id="upload-pic-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -43,7 +43,7 @@ export default {
 
 <script v-pre type="text/x-template" id="multe-upload-pic-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -86,7 +86,7 @@ export default {
 |      limit      | `Number`  |               1                | 限制上传的数量，如果不是1，值则需要改为数组 |
 |    multiple     | `Boolean` |             false              |                  选项列表                   |
 |     maxSize     | `Number`  |               2                |          限制文件大小，以`M`为单位          |
-| allowExtensions |  `Array`  | ['webp', 'jpeg', 'jpg', 'png'] |                限制文件格式                 |
+| extensions |  `Array`  | ['webp', 'jpeg', 'jpg', 'png'] |                限制文件格式                 |
 
 ## 文件
 
@@ -94,7 +94,7 @@ export default {
 
 <script v-pre type="text/x-template" id="upload-file-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -130,4 +130,4 @@ export default {
 |      limit      | `Number`  |   1    | 限制上传的数量，如果不是1，值则需要改为数组 |
 |    multiple     | `Boolean` | false  |                  选项列表                   |
 |     maxSize     | `Number`  |   2    |          限制文件大小，以`M`为单位          |
-| allowExtensions |  `Array`  |   []   |                限制文件格式                 |
+| extensions |  `Array`  |   []   |                限制文件格式                 |

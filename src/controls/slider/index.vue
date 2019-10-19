@@ -1,7 +1,8 @@
 <template>
   <el-slider v-model="innerValue"
              :input-size="size"
-             v-bind="attrs" />
+             v-bind="attrs"
+             @change="change" />
 </template>
 
 <script>

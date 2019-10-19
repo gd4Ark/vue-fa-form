@@ -1,10 +1,10 @@
 <template>
-  <el-time-select v-if="controlType === 'select'"
+  <el-time-select v-if="type === 'select'"
                   v-model="innerValue"
                   :placeholder="getPlaceholder('选择')"
                   v-bind="config"
                   @change="change" />
-  <el-time-picker v-else-if="controlType === 'picker'"
+  <el-time-picker v-else-if="type === 'picker'"
                   v-model="innerValue"
                   :placeholder="getPlaceholder('选择')"
                   v-bind="config"
@@ -16,15 +16,9 @@ import control from '../../mixins/control'
 export default {
   name: 'TimeControl',
   mixins: [control],
-  props: {
-    change: {
-      type: Function,
-      required: true
-    }
-  },
   computed: {
-    controlType() {
-      return this.get(this.item, 'meta.control_type', 'select')
+    type() {
+      return this.get(this.item, 'meta.type', 'select')
     },
     config() {
       const defaultConfig = {

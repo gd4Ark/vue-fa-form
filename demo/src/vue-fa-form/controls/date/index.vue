@@ -10,12 +10,6 @@ import control from '../../mixins/control'
 export default {
   name: 'DateControl',
   mixins: [control],
-  props: {
-    change: {
-      type: Function,
-      required: true
-    }
-  },
   computed: {
     config() {
       const defaultConfig = {

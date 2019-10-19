@@ -2,13 +2,13 @@
 
   - [安装](zh-cn/introduction/install)
   - [快速上手](zh-cn/introduction/quick-start)
+  - [选项](zh-cn/introduction/options)
 
 * 表单项
 
   - [输入框（input）](zh-cn/form-items/input)
   - [计数器（ count ）](zh-cn/form-items/count)
   - [单选框（ radio ）](zh-cn/form-items/radio)
-  - [多选框（ checkbox ）](zh-cn/form-items/checkbox)
   - [选择器（ select ）](zh-cn/form-items/select)
   - [联级选择器（ cascader ）](zh-cn/form-items/cascader)
   - [开关（ switch ）](zh-cn/form-items/switch)

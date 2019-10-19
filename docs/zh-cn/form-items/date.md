@@ -4,7 +4,7 @@
 
 <script v-pre type="text/x-template" id="date-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -41,7 +41,7 @@ export default {
 
 <script v-pre type="text/x-template" id="date-2-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -110,7 +110,7 @@ export default {
 
 <script v-pre type="text/x-template" id="date-3-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -159,4 +159,4 @@ export default {
 |   editable   |    true    | 范围选择时开始日期的占位内容 |
 |  clearable   |    true    |          是否可清空          |
 | value-format | yyyy-MM-dd |           时间格式           |
-
+| changeSubmit | `Boolean`  |            false             |

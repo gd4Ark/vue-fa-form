@@ -5,16 +5,16 @@ export default {
   props: {
     change: {
       type: Function,
-      required: true,
+      required: true
     },
     options: {
       type: Array,
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
     hasOptions() {
       return !isNull(this.options)
-    },
-  },
+    }
+  }
 }

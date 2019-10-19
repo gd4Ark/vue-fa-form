@@ -1,6 +1,7 @@
 <template>
   <el-switch v-model="innerValue"
-             v-bind="attrs" />
+             v-bind="attrs"
+             @change="change" />
 </template>
 
 <script>

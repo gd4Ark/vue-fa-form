@@ -8,12 +8,12 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true,
+      required: true
     },
     model: {
       type: [File, String, Array, Object],
-      required: true,
-    },
+      required: true
+    }
   },
   watch: {
     files(files) {
@@ -35,38 +35,38 @@ export default {
       if (!isEmpty(files)) {
         return this.initUrl(files)
       }
-    },
+    }
   },
   data: () => ({
     default: {
       limit: 1,
       maxSize: 2,
-      allowExtensions: [],
+      extensions: []
     },
     dialogImageUrl: '',
     dialogVisible: false,
     files: [],
-    fileList: [],
+    fileList: []
   }),
   computed: {
-    itemMeta() {
+    meta() {
       return this.get(this.item, 'meta', {})
     },
     hiddenUpload() {
       return this.files.length >= this.limit
     },
     limit() {
-      return this.itemMeta.limit || this.default.limit
+      return this.meta.limit || this.default.limit
     },
     maxSize() {
-      return this.itemMeta.max_size || this.default.maxSize
+      return this.meta.maxSize || this.default.maxSize
     },
-    allowExtensions() {
-      return this.itemMeta.allow_extensions || this.default.allowExtensions
+    extensions() {
+      return this.meta.extensions || this.default.extensions
     },
     showAllowExtensions() {
-      return this.allowExtensions.join('/')
-    },
+      return this.extensions.join('/')
+    }
   },
   mounted() {
     this.updateFiles(this.files)
@@ -83,14 +83,14 @@ export default {
       if (!this.isAllowExtension(file)) {
         this.$message({
           message: '无法上传此格式的文件',
-          type: 'warning',
+          type: 'warning'
         })
         return false
       }
       if (this.isLtMaxSize(file)) {
         this.$message({
           message: `文件最多可上传${this.maxSize}M`,
-          type: 'warning',
+          type: 'warning'
         })
         return false
       }
@@ -99,7 +99,7 @@ export default {
     onExceed() {
       this.$message({
         message: `最多只能上传${this.limit}个文件`,
-        type: 'warning',
+        type: 'warning'
       })
     },
     onRquest({ file }, fileList) {
@@ -117,10 +117,10 @@ export default {
       this.$refs.upload.clearFiles()
     },
     isAllowExtension(file) {
-      if (this.allowExtensions.length < 1) return true
+      if (this.extensions.length < 1) return true
       const extension = file.name.split('.').pop()
       const toLow = str => str.toLocaleLowerCase()
-      return this.allowExtensions.find(el => toLow(el) === toLow(extension))
+      return this.extensions.find(el => toLow(el) === toLow(extension))
     },
     isLtMaxSize(file) {
       return file.size / 1024 / 1024 > this.maxSize
@@ -136,13 +136,13 @@ export default {
       this.fileList = paths.map(item => {
         return {
           url: item,
-          pre: true,
+          pre: true
         }
       })
       this.setFiles(this.fileList)
     },
     isEqualURL(files) {
       return isEqual(this.files.map(item => item.url), files)
-    },
-  },
+    }
+  }
 }

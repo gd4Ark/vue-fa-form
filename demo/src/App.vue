@@ -1,60 +1,185 @@
 <template>
-  <vue-fa-form label-width="100px"
-               :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
-
 <script>
-import VueFaForm from './vue-fa-form'
 export default {
-  components: {
-    VueFaForm
-  },
-  data() {
-    return {
-      formItems: [
-        {
-          label: '固定时间',
-          key: 'time1',
-          type: 'time',
-          meta: {
-            'picker-options': {
-              start: '08:30',
-              step: '00:15',
-              end: '18:30'
-            }
+  data: () => ({
+    formItems: [
+      {
+        label: '文本框',
+        key: 'text',
+        type: 'text',
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '文本框必填'
           }
-        },
-        {
-          label: '任意时间',
-          key: 'time2',
-          type: 'time',
-          meta: {
-            control_type: 'picker',
-            'picker-options': {
-              'selectable-range': '18:30:00 - 20:30:00'
-            }
-          }
-        },
-        {
-          label: '时间范围',
-          key: 'time3',
-          type: 'time',
-          meta: {
-            control_type: 'picker',
-            isRange: true,
-            valueFormat: 'HH:mm:ss'
-          }
+        ]
+      },
+      {
+        label: '文本域',
+        key: 'textarea',
+        type: 'textarea',
+        meta: {
+          rows: 5
         }
-      ],
-      getFormData: () => ({
-        time1: '',
-        time2: '',
-        time3: ''
-      })
-    }
-  },
+      },
+      {
+        label: '单图片',
+        key: 'single_pic',
+        type: 'pic',
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '单图片为必填'
+          }
+        ]
+      },
+      {
+        label: '多图片',
+        key: 'multi_pic',
+        type: 'pic',
+        meta: {
+          limit: 5,
+          multiple: true
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '单图片为必填'
+          }
+        ]
+      },
+      {
+        label: '选择',
+        key: 'select',
+        type: 'select',
+        meta: {
+          changeSubmit: true,
+          options: [
+            {
+              label: '选项一',
+              value: 1
+            },
+            {
+              label: '选项二',
+              value: 2
+            },
+            {
+              label: '选项三',
+              value: 3
+            }
+          ],
+          filterable: true
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
+        label: '单选项',
+        key: 'radio',
+        type: 'radio',
+        meta: {
+          type: 'el-radio-button',
+          options: [
+            {
+              label: '男',
+              value: 0
+            },
+            {
+              label: '女',
+              value: 1
+            }
+          ]
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
+        label: '多选项',
+        key: 'checkbox',
+        type: 'checkbox',
+        meta: {
+          options: [
+            {
+              label: '选项一',
+              value: 0
+            },
+            {
+              label: '选项二',
+              value: 1
+            }
+          ]
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
+        label: '日期',
+        key: 'date',
+        type: 'date',
+        meta: {
+          type: 'datetime'
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '时间为必填'
+          }
+        ]
+      },
+      {
+        label: '位置',
+        key: 'location',
+        type: 'location',
+        meta: {
+          searchOption: {
+            city: '惠州',
+            citylimit: true
+          },
+          mapCenter: [114.414659, 23.11059]
+        }
+      },
+      {
+        label: '富文本',
+        key: 'richtext',
+        type: 'richtext'
+      }
+    ],
+    getFormData: () => ({
+      text: '',
+      textarea: '',
+      single_pic: '',
+      multi_pic: [],
+      select: '',
+      radio: '',
+      checkbox: [],
+      date: '',
+      location: [],
+      richtext: ''
+    })
+  }),
   methods: {
     submit(data) {
       console.log(data)

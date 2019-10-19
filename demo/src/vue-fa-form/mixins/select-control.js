@@ -4,11 +4,11 @@ export default {
   props: {
     change: {
       type: Function,
-      required: true,
+      required: true
     },
     options: {
       type: Array,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 }

@@ -1,12 +1,13 @@
 <template>
-  <el-checkbox-group v-if="this.hasOptions"
+  <el-checkbox-group v-if="hasOptions"
                      v-model="innerValue"
-                     v-bind="attrs">
-    <component :is="get(item,'meta.checkbox_type','el-checkbox')"
+                     v-bind="attrs"
+                     @change="change">
+    <component :is="get(item,'meta.type','el-checkbox')"
                v-for="option in options"
                :key="option.value"
                :label="option.value"
-               v-bind="get(item,'meta.checkbox_attrs',{})">
+               v-bind="get(item,'meta.attrs',{})">
       {{ option.label }}
     </component>
   </el-checkbox-group>

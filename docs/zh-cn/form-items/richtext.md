@@ -4,7 +4,7 @@
 
 <script v-pre type="text/x-template" id="richtext-example">
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>

@@ -25,7 +25,7 @@ import VueFaForm from 'vue-fa-form'
 ```html
 <template>
   <vue-fa-form
-    :form-item="formItems"
+    :form-items="formItems"
     :get-form-data="getFormData"
     @submit="submit"
   />
@@ -82,4 +82,3 @@ export default {
 ## Conclusion
 
 If you think my project is good👏 . Give a Star⭐ encouragement.
-

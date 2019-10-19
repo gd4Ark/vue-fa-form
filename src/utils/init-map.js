@@ -21,9 +21,9 @@ export default (Vue, config) => {
       'AMap.ToolBar',
       'AMap.MapType',
       'AMap.PolyEditor',
-      'AMap.CircleEditor',
+      'AMap.CircleEditor'
     ],
-    v: '1.4.4',
+    v: '1.4.4'
   })
 
   Vue.use(VueAMap)

@@ -5,11 +5,11 @@ let controls = fileListToObject(controlsFiles)
 controls = Object.keys(controls).reduce((modules, key) => {
   const control = controls[key]
   return Object.assign(modules, {
-    [control.name]: control,
+    [control.name]: control
   })
 }, {})
 export default {
   components: {
-    ...controls,
-  },
+    ...controls
+  }
 }

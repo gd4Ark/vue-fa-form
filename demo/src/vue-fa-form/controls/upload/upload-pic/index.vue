@@ -31,7 +31,7 @@ export default {
     default: {
       limit: 1,
       maxSize: 2,
-      allowExtensions: ['webp', 'jpeg', 'jpg', 'png']
+      extensions: ['webp', 'jpeg', 'jpg', 'png']
     }
   }),
   methods: {

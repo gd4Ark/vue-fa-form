@@ -3,24 +3,28 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true,
+      required: true
     },
     value: {
       type: [String, Number, Boolean, Array, Object, File, Date],
-      required: true,
+      required: true
     },
     size: {
       type: String,
-      default: '',
+      default: ''
     },
     getPlaceholder: {
       type: Function,
-      default: () => {},
+      default: () => {}
     },
     submit: {
       type: Function,
-      required: true,
+      default: () => {}
     },
+    change: {
+      type: Function,
+      default: () => {}
+    }
   },
   computed: {
     innerValue: {
@@ -29,17 +33,17 @@ export default {
       },
       set(val) {
         this.$emit('input', val)
-      },
+      }
     },
     attrs() {
       const defaultAttrs = {
-        size: this.size,
+        size: this.size
       }
       const meta = this.get(this.item, 'meta', {})
       return Object.assign(defaultAttrs, meta)
-    },
+    }
   },
   methods: {
-    get,
-  },
+    get
+  }
 }

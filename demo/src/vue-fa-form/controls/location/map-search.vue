@@ -1,7 +1,7 @@
 <template>
   <div class="map-search-container">
     <el-amap-search-box class="search-box"
-                        :search-option="get(item,'meta.search_option')"
+                        :search-option="get(item,'meta.searchOption')"
                         :on-search-result="onSearchResult"></el-amap-search-box>
     <amap :center="mapCenter"
           :item="item"
@@ -32,7 +32,7 @@ export default {
     mapCenter: []
   }),
   mounted() {
-    this.mapCenter = this.get(this.item, 'meta.map_center')
+    this.mapCenter = this.get(this.item, 'meta.mapCenter')
   },
   methods: {
     get,

@@ -5,7 +5,7 @@
 <script v-pre type="text/x-template" id="checkbox-example">
 <template>
   <vue-fa-form label-width="100px"
-               :form-item="formItems"
+               :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -62,25 +62,25 @@ export default {
 
 支持 Checkbox 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/checkbox)，除此之外：
 
-|      属性      |    类型    |   默认值    |                                       描述                                        |
-| :------------: | :--------: | :---------: | :-------------------------------------------------------------------------------: |
-| checkbox_type  |  `String`  | el-checkbox |                  控件类型，可选：el-checkbox、el-checkbox-button                  |
-| checkbox_attrs |  `Object`  |             | 子控件的属性列表，详见[文档](https://element.eleme.cn/#/zh-CN/component/checkbox) |
-|    options     |  `Array`   |             |                                     选项列表                                      |
-|   getOptions   | `Function` |             |                    获取选项列表方法，该属性优先级比`options`高                    |
+|    属性    |    类型    |   默认值    |                                       描述                                        |
+| :--------: | :--------: | :---------: | :-------------------------------------------------------------------------------: |
+|    type    |  `String`  | el-checkbox |                  控件类型，可选：el-checkbox、el-checkbox-button                  |
+|   attrs    |  `Object`  |             | 子控件的属性列表，详见[文档](https://element.eleme.cn/#/zh-CN/component/checkbox) |
+|  options   |  `Array`   |             |                                     选项列表                                      |
+| getOptions | `Function` |             |                    获取选项列表方法，该属性优先级比`options`高                    |
 
 ### options
 
-```js
+```json
 [
   {
-    label: '男',
-    value: 0,
+    "label": "男",
+    "value": 0
   },
   {
-    label: '女',
-    value: 1,
-  },
+    "label": "女",
+    "value": 1
+  }
 ]
 ```
 
@@ -93,7 +93,7 @@ export default {
 <script v-pre type="text/x-template" id="dynamic-checkbox-example">
 <template>
   <vue-fa-form label-width="100px"
-               :form-item="formItems"
+               :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -157,7 +157,7 @@ export default {
 <script v-pre type="text/x-template" id="switch-checkbox-example">
 <template>
   <vue-fa-form label-width="100px"
-               :form-item="formItems"
+               :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>

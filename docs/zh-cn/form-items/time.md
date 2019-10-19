@@ -5,7 +5,7 @@
 <script v-pre type="text/x-template" id="time-example">
 <template>
   <vue-fa-form label-width="100px"
-               :form-item="formItems"
+               :form-items="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -32,7 +32,7 @@ export default {
           key: 'time2',
           type: 'time',
           meta: {
-            control_type: 'picker',
+            type: 'picker',
             'picker-options': {
               'selectable-range': '18:30:00 - 20:30:00'
             }
@@ -43,7 +43,7 @@ export default {
           key: 'time3',
           type: 'time',
           meta: {
-            control_type: 'picker',
+            type: 'picker',
             isRange: true,
           }
         }
@@ -68,11 +68,11 @@ export default {
 
 支持 TimePicker 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/time-picker)，除此之外：
 
-|     属性     |   类型   | 默认值 |          描述          |
-| :----------: | :------: | :----: | :--------------------: |
-| control_type | `String` | select | 控件类型，可选值如下。 |
+| 属性 |   类型   | 默认值 |          描述          |
+| :--: | :------: | :----: | :--------------------: |
+| type | `String` | select | 控件类型，可选值如下。 |
 
-### control_type
+### type
 
 |   值   |      控件      |
 | :----: | :------------: |
