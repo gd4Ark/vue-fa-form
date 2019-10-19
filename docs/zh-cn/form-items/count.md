@@ -46,7 +46,7 @@ export default {
 </script>
 </script>
 
-## 属性
+## meta 属性
 
 参见 [Element 文档](https://element.eleme.cn/#/zh-CN/component/input-number)
 

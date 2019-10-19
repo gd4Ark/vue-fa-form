@@ -104,7 +104,7 @@ export default {
 </script>
 </script>
 
-## 时间范围
+## 日期范围
 
 <vuep  template="#date-3-example"></vuep>
 
@@ -146,7 +146,17 @@ export default {
 </script>
 </script>
 
-## 属性
+## meta 属性
 
 支持 DatePicker 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/date-picker)。
+
+### 默认值
+
+|     属性     |   默认值   |             描述             |
+| :----------: | :--------: | :--------------------------: |
+|     type     |    date    |           控件类型           |
+|    align     |   center   |           对齐方式           |
+|   editable   |    true    | 范围选择时开始日期的占位内容 |
+|  clearable   |    true    |          是否可清空          |
+| value-format | yyyy-MM-dd |           时间格式           |
 

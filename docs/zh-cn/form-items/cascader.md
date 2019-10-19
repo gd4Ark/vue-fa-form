@@ -310,7 +310,7 @@ export default {
 </script>
 </script>
 
-## 属性
+## meta 属性
 
 支持 Cascader 组件的所有属性，详见：[文档](https://element.eleme.cn/#/zh-CN/component/cascader)，除此之外：
 

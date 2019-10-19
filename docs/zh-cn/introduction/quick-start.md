@@ -26,7 +26,7 @@ import VueFaForm from 'vue-fa-form'
 
 <script v-pre type="text/x-template" id="quick-start-example">
 <template>
-  <vue-fa-form  :form-item="formItems"
+  <vue-fa-form :form-item="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
@@ -137,6 +137,30 @@ export default {
         ]
       },
       {
+        label: '多选项',
+        key: 'checkbox',
+        type: 'checkbox',
+        meta: {
+          options: [
+            {
+              label: '男',
+              value: 0
+            },
+            {
+              label: '女',
+              value: 1
+            }
+          ]
+        },
+        rules: [
+          {
+            required: true,
+            trigger: 'change',
+            message: '必须选择一个'
+          }
+        ]
+      },
+      {
         label: '时间',
         key: 'date',
         type: 'date',
@@ -159,6 +183,7 @@ export default {
       multi_pic: [],
       select: '',
       radio: '',
+      checkbox: [],
       date: ''
     })
   }),
@@ -169,7 +194,6 @@ export default {
   }
 }
 </script>
-
 </script>
 
 ## form-item

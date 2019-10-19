@@ -1,144 +1,60 @@
 <template>
-  <vue-fa-form :form-item="formItems"
+  <vue-fa-form label-width="100px"
+               :form-item="formItems"
                :get-form-data="getFormData"
                @submit="submit" />
 </template>
+
 <script>
 import VueFaForm from './vue-fa-form'
 export default {
   components: {
     VueFaForm
   },
-  data: () => ({
-    formItems: [
-      {
-        label: '文本框',
-        key: 'text',
-        type: 'text',
-        rules: [
-          {
-            required: true,
-            trigger: 'blur',
-            message: '文本框必填'
+  data() {
+    return {
+      formItems: [
+        {
+          label: '固定时间',
+          key: 'time1',
+          type: 'time',
+          meta: {
+            'picker-options': {
+              start: '08:30',
+              step: '00:15',
+              end: '18:30'
+            }
           }
-        ]
-      },
-      {
-        label: '文本域',
-        key: 'textarea',
-        type: 'textarea',
-        meta: {
-          row: 5
+        },
+        {
+          label: '任意时间',
+          key: 'time2',
+          type: 'time',
+          meta: {
+            control_type: 'picker',
+            'picker-options': {
+              'selectable-range': '18:30:00 - 20:30:00'
+            }
+          }
+        },
+        {
+          label: '时间范围',
+          key: 'time3',
+          type: 'time',
+          meta: {
+            control_type: 'picker',
+            isRange: true,
+            valueFormat: 'HH:mm:ss'
+          }
         }
-      },
-      {
-        label: '单图片',
-        key: 'single_pic',
-        type: 'pic',
-        rules: [
-          {
-            required: true,
-            trigger: 'blur',
-            message: '单图片为必填'
-          }
-        ]
-      },
-      {
-        label: '多图片',
-        key: 'multi_pic',
-        type: 'pic',
-        meta: {
-          limit: 5,
-          multiple: true
-        },
-        rules: [
-          {
-            required: true,
-            trigger: 'blur',
-            message: '单图片为必填'
-          }
-        ]
-      },
-      {
-        label: '选择',
-        key: 'select',
-        type: 'select',
-        meta: {
-          options: [
-            {
-              label: '选项一',
-              value: 1
-            },
-            {
-              label: '选项二',
-              value: 2
-            },
-            {
-              label: '选项三',
-              value: 3
-            }
-          ],
-          filterable: true
-        },
-        rules: [
-          {
-            required: true,
-            trigger: 'change',
-            message: '必须选择一个'
-          }
-        ]
-      },
-      {
-        label: '单选项',
-        key: 'radio',
-        type: 'radio',
-        meta: {
-          radio_type: 'el-radio-button',
-          options: [
-            {
-              label: '男',
-              value: 0
-            },
-            {
-              label: '女',
-              value: 1
-            }
-          ]
-        },
-        rules: [
-          {
-            required: true,
-            trigger: 'change',
-            message: '必须选择一个'
-          }
-        ]
-      },
-      {
-        label: '时间',
-        key: 'date',
-        type: 'date',
-        meta: {
-          control_type: 'datetime'
-        },
-        rules: [
-          {
-            required: true,
-            trigger: 'blur',
-            message: '时间为必填'
-          }
-        ]
-      }
-    ],
-    getFormData: () => ({
-      text: '',
-      textarea: '',
-      single_pic: '',
-      multi_pic: [],
-      select: '',
-      radio: '',
-      date: ''
-    })
-  }),
+      ],
+      getFormData: () => ({
+        time1: '',
+        time2: '',
+        time3: ''
+      })
+    }
+  },
   methods: {
     submit(data) {
       console.log(data)
