@@ -20,9 +20,9 @@ Vue.use(VueFaForm, {
 
 这时候`vue-fa-form`已经全局注册，在其他地方则可以直接使用。
 
-## CND 引入
+## CDN 引入
 
-如果你是通过 CND 引入，那么你需要先引入：
+如果你是通过 CDN 引入，那么你需要先引入：
 
 ```html
 <script src="https://unpkg.com/vue-amap/dist/index.js"></script>

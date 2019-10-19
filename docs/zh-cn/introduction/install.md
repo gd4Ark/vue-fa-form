@@ -12,7 +12,7 @@ npm install vue-fa-form --save
 yarn add vue-fa-form
 ```
 
-## CND 引入
+## CDN 引入
 
 ```html
 <script src="//unpkg.com/vue-fa-form/dist/vue-fa-form.min.js"></script>
