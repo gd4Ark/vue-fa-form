@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.45](https://github.com/gd4Ark/vue-fa-form/compare/v0.0.44...v0.0.45) (2019-10-26)
+
 ### 0.0.44 (2019-10-26)
 
 
