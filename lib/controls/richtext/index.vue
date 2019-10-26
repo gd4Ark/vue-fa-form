@@ -31,7 +31,7 @@ const tinymceCDN =
   'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js'
 
 export default {
-  name: 'RichTextControl',
+  name: 'RichtextControl',
   components: { editorImage },
   props: {
     item: {

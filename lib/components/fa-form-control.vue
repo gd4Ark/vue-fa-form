@@ -1,101 +1,13 @@
 <template>
   <div v-if="loaded">
-    <!-- select -->
-    <select-control v-if="item.type === 'select'"
-                    v-model="val"
-                    :size="size"
-                    :item="item"
-                    :options="selectOptions"
-                    :change="changeSelect"
-                    :get-placeholder="getPlaceholder" />
-    <!-- radio -->
-    <radio-control v-else-if="item.type === 'radio'"
-                   v-model="val"
-                   :size="size"
-                   :item="item"
-                   :options="selectOptions"
-                   :change="changeSelect"
-                   :get-placeholder="getPlaceholder" />
-    <!-- checkbox -->
-    <checkbox-control v-else-if="item.type === 'checkbox'"
-                      v-model="val"
-                      :size="size"
-                      :item="item"
-                      :options="selectOptions"
-                      :change="changeSelect"
-                      :get-placeholder="getPlaceholder" />
-    <!-- cascader -->
-    <cascader-control v-else-if="item.type === 'cascader'"
-                      v-model="val"
-                      :size="size"
-                      :item="item"
-                      :change="changeSelect"
-                      :get-placeholder="getPlaceholder" />
-    <!-- time -->
-    <time-control v-else-if="item.type === 'time'"
-                  v-model="val"
-                  :size="size"
-                  :item="item"
-                  :change="changeSelect"
-                  :get-placeholder="getPlaceholder" />
-    <!-- date -->
-    <date-control v-else-if="item.type === 'date'"
-                  v-model="val"
-                  :size="size"
-                  :item="item"
-                  :change="changeSelect"
-                  :get-placeholder="getPlaceholder" />
-    <!-- slider -->
-    <slider-control v-else-if="item.type === 'slider'"
-                    v-model="val"
-                    :size="size"
-                    :item="item"
-                    :change="changeSelect"
-                    :get-placeholder="getPlaceholder" />
-    <!-- count -->
-    <count-control v-else-if="item.type === 'count'"
-                   v-model="val"
-                   :size="size"
-                   :item="item"
-                   :submit="submit"
-                   :get-placeholder="getPlaceholder" />
-    <!-- upload -->
-    <upload-control v-else-if="item.type === 'file'"
-                    :item="item"
-                    :model.sync="val" />
-    <!-- upload-pic -->
-    <upload-pic-control v-else-if="item.type === 'pic'"
-                        v-model="val"
-                        :item="item"
-                        :model.sync="val" />
-    <!-- switch -->
-    <switch-control v-else-if="item.type === 'switch'"
-                    v-model="val"
-                    :size="size"
-                    :item="item"
-                    :change="changeSelect"
-                    :get-placeholder="getPlaceholder" />
-    <!-- location -->
-    <location-control v-else-if="item.type === 'location'"
-                      :value.sync="val"
-                      :item="item"
-                      :size="size"
-                      :change="changeSelect"
-                      :get-placeholder="getPlaceholder" />
-    <!-- rich text -->
-    <rich-text-control v-else-if="item.type === 'richtext'"
-                       ref="richText"
-                       v-model="val"
-                       :item="item"
-                       :get-placeholder="getPlaceholder"
-                       :size="size" />
-    <!-- default -->
-    <input-control v-else
-                   v-model="val"
-                   :submit="submit"
-                   :get-placeholder="getPlaceholder"
-                   :item="item"
-                   :size="size" />
+    <component :is="controlType"
+               v-if="useSync"
+               :value.sync="val"
+               v-bind="controlAttrs" />
+    <component :is="controlType"
+               v-else
+               v-model="val"
+               v-bind="controlAttrs" />
   </div>
 </template>
 <script>
@@ -123,10 +35,13 @@ export default {
   },
   data: () => ({
     loaded: false,
-    val: '',
-    options: []
+    val: ''
   }),
   computed: {
+    useSync() {
+      const types = ['upload', 'uploadPic', 'location']
+      return types.includes(this.item.type)
+    },
     selectOptions() {
       if (get(this.item, 'meta.getOptions')) {
         return this.item.meta.getOptions()

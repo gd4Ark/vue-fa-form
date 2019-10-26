@@ -57,7 +57,7 @@ export default {
       {
         label: '单图片',
         key: 'single_pic',
-        type: 'pic',
+        type: 'uploadPic',
         rules: [
           {
             required: true,
@@ -69,7 +69,7 @@ export default {
       {
         label: '多图片',
         key: 'multi_pic',
-        type: 'pic',
+        type: 'uploadPic',
         meta: {
           limit: 5,
           multiple: true

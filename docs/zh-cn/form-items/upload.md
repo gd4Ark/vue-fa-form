@@ -19,7 +19,7 @@ export default {
         {
           label: '图片',
           key: 'pic',
-          type: 'pic'
+          type: 'uploadPic'
         }
       ],
       getFormData: () => ({
@@ -37,7 +37,6 @@ export default {
 </script>
 
 ## 多图片
-
 
 <vuep  template="#multe-upload-pic-example"></vuep>
 
@@ -58,7 +57,7 @@ export default {
         {
           label: '图片',
           key: 'pic',
-          type: 'pic',
+          type: 'uploadPic',
           meta: {
             multiple: true,
             limit: 5
@@ -81,12 +80,12 @@ export default {
 
 ### 图片 meta 属性
 
-|      属性       |   类型    |             默认值             |                    描述                     |
-| :-------------: | :-------: | :----------------------------: | :-----------------------------------------: |
-|      limit      | `Number`  |               1                | 限制上传的数量，如果不是1，值则需要改为数组 |
-|    multiple     | `Boolean` |             false              |                  选项列表                   |
-|     maxSize     | `Number`  |               2                |          限制文件大小，以`M`为单位          |
-| extensions |  `Array`  | ['webp', 'jpeg', 'jpg', 'png'] |                限制文件格式                 |
+|    属性    |   类型    |             默认值             |                     描述                     |
+| :--------: | :-------: | :----------------------------: | :------------------------------------------: |
+|   limit    | `Number`  |               1                | 限制上传的数量，如果不是 1，值则需要改为数组 |
+|  multiple  | `Boolean` |             false              |                   选项列表                   |
+|  maxSize   | `Number`  |               2                |          限制文件大小，以`M`为单位           |
+| extensions |  `Array`  | ['webp', 'jpeg', 'jpg', 'png'] |                 限制文件格式                 |
 
 ## 文件
 
@@ -106,7 +105,7 @@ export default {
         {
           label: '文件',
           key: 'file',
-          type: 'file'
+          type: 'upload'
         }
       ],
       getFormData: () => ({
@@ -125,9 +124,9 @@ export default {
 
 ### 文件 meta 属性
 
-|      属性       |   类型    | 默认值 |                    描述                     |
-| :-------------: | :-------: | :----: | :-----------------------------------------: |
-|      limit      | `Number`  |   1    | 限制上传的数量，如果不是1，值则需要改为数组 |
-|    multiple     | `Boolean` | false  |                  选项列表                   |
-|     maxSize     | `Number`  |   2    |          限制文件大小，以`M`为单位          |
-| extensions |  `Array`  |   []   |                限制文件格式                 |
+|    属性    |   类型    | 默认值 |                     描述                     |
+| :--------: | :-------: | :----: | :------------------------------------------: |
+|   limit    | `Number`  |   1    | 限制上传的数量，如果不是 1，值则需要改为数组 |
+|  multiple  | `Boolean` | false  |                   选项列表                   |
+|  maxSize   | `Number`  |   2    |          限制文件大小，以`M`为单位           |
+| extensions |  `Array`  |   []   |                 限制文件格式                 |
